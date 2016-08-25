@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{ super() }}
+<script src="{{ url_for('static', filename = './js/script.js') }}"></script>
+{% endblock %}
+
+{% block nav_items %}
+<li><a href="/">Sign In</a></li>
+{% endblock %}
+
+{% block page_content %}
+<div class="container" id="loginform">
+  <div class="index-header">
+    <h1 id="logo-text">Serializer</h1>
+  </div>
+  <form method="post">
+    <div>
+      <input type="text" id="username" placeholder="Username" required value="123">
+    </div>
+    <div>
+      <input type="text" id="password" placeholder="Password" required>
+    </div>
+    <div>
+      <button class="btn btn-primary" id="formbtn" value="1">Submit</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

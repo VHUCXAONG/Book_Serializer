@@ -1,0 +1,39 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Serializer{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename = 'favico.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename = 'favico.ico') }}" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = './css/style.css') }}" />
+<script src="{{ url_for('static', filename = './js/jquery.min.js') }}"></script>
+{% endblock %}
+
+{% block navbar %}
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a1 class="navbar-brand">Serializer</a>
+    </div>
+
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        {% block nav_items %}
+        <li><a href="/">Home</a></li>
+        {% endblock %}
+      </ul>
+    </div>
+  </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+  {% block page_content %}
+  {% endblock %}
+{% endblock %}

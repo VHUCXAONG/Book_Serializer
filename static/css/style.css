@@ -1,0 +1,36 @@
+.navbar {
+  height: 50px;
+}
+
+.container {
+  padding-left: 0px;
+  margin-left: 10px;
+}
+
+div#loginform {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input[type="text"] {
+  width: 320px;
+  height: 50px;
+  font-size: 20px;
+}
+
+#logo-text {
+  color:skyblue;
+  font-size: 80px;
+}
+
+form {
+  padding-top: 30px;
+}
+
+.btn-primary {
+  width: 320px;
+  height: 50px;
+  font-size: 20px;
+  margin-top: 30px;
+}
