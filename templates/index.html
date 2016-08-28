@@ -13,16 +13,24 @@
 <div class="container" id="loginform">
   <div class="index-header">
     <h1 id="logo-text">Serializer</h1>
+  <div id="logerror">
+     &nbsp
   </div>
-  <form method="post">
+  </div>
+  <form>
     <div>
-      <input type="text" id="username" placeholder="Username" required value="123">
+      <input type="text" id="username" placeholder="Username" required>
     </div>
     <div>
-      <input type="text" id="password" placeholder="Password" required>
+      <input type="password" id="password" placeholder="Password" required>
     </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" id="remember_me"> remember me
+      </label>
+  </div>
     <div>
-      <button class="btn btn-primary" id="formbtn" value="1">Submit</button>
+      <button class="btn btn-primary" id="formbtn" value="1" type="button">Submit</button>
     </div>
   </form>
 </div>

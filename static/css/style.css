@@ -8,12 +8,13 @@
 }
 
 div#loginform {
+  width: 320px;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
 }
 
-input[type="text"] {
+input[type="text"], input[type="password"] {
   width: 320px;
   height: 50px;
   font-size: 20px;
@@ -24,13 +25,16 @@ input[type="text"] {
   font-size: 80px;
 }
 
-form {
-  padding-top: 30px;
+div#logerror{
+  color:red;
+}
+
+.checkbox {
+  text-align: left;
 }
 
 .btn-primary {
   width: 320px;
   height: 50px;
   font-size: 20px;
-  margin-top: 30px;
 }
