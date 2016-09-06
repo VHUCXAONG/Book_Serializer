@@ -1,10 +1,11 @@
+# -*- coding: utf-8 -*-
 from run import db
 from werkzeug.security import generate_password_hash, check_password_hash
 
 class Book(db.Model):
     __tablename__ = 'book'
     id = db.Column(db.Integer, primary_key=True)
-    book_name = db.Column(db.String(64), unique=True, index=True)
+    book_name = db.Column(db.UnicodeText(128), unique=True, index=True)
     chapter_number = db.Column(db.Integer)
     source = db.Column(db.String(64))
     def __init__(self, name, chapter, source):
@@ -17,7 +18,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(128), index=True)
-    book_list = db.Column(db.String(1000), index=True)
+    book_list = db.Column(db.UnicodeText(1000), index=True)
 
     def __init__(self, username, book_list):
         self.username = username

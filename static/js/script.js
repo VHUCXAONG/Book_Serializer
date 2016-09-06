@@ -1,10 +1,12 @@
+var username, password;
+
 function setCookie(name, value, expire){
   var date = new Date();
   date.setDate(date.getDate() + expire);
   document.cookie = name + "=" + escape(value) + ((expire == null) ? "" : ";expires=" + date.toGMTString());
 }
 
-function getCookie(cname){
+function getCookie(cname) {
   var name = cname + "=";
   var ca = document.cookie.split(';');
   for (var i = 0; i < ca.length; i++) {
@@ -15,45 +17,71 @@ function getCookie(cname){
   return "";
 }
 
-$(document).ready(function (){
-  var username, password;
-  if (getCookie('username') != "" && getCookie('password') != "") {
-    username = getCookie('username');
-    password = getCookie('password');
-    $.post('/login', {
-      username: username,
-      password: password,
-      remember_me: true
-    }, function(data){
-      if (data.auth){
-        window.location.href = "/a123";
-      }
-    });
+function logSuccess() {
+  username = getCookie('username');
+  var menu = $('#menu');
+  console.log(menu);
+  $.post('/loadbook',function(data) {
+    console.log(data);
+    console.log(data.book_name);
+    for (var i = 0; i < data.book_name.length; i++) {
+      var name = data.book_name[i];
+      var new_li = '<li><a>' + name + '</a></li>';
+      menu.append(new_li);
+    }
+  });
+}
+
+
+$(document).ready(function(){
+  var href = location.href;
+  url_list = href.split("/");
+  current_page = url_list[url_list.length - 1];
+  console.log(current_page);
+  if (current_page == 'book') {
+    logSuccess();
   }
-  else{
-    var btn = $("#formbtn");
-    btn.click(function(){
-      username = $('#username').val();
-      password = $('#password').val();
-      remember_me = $('#remember_me').is(':checked');
+  else {
+    if (getCookie('username') != "" && getCookie('password') != "") {
+      username = getCookie('username');
+      password = getCookie('password');
       $.post('/login', {
         username: username,
         password: password,
-        remember_me: remember_me
-      }, function(data){
-        if (data.auth) {
-          if (data.isCookie){
-              setCookie('username', username, 1);
-              setCookie('password', password, 1);
-          }
-          console.log(document.cookie);
-          console.log(getCookie('username'));
-          window.location.href = "/a123";
-        }
-        else {
-          $('#logerror').text('invalid username or password');
+        remember_me: true
+      }, function(data) {
+        if (data.auth){
+          window.location.href = '/book';
+          logSuccess();
         }
       });
-    });
+    }
+    else{
+      var btn = $("#formbtn");
+      btn.click(function() {
+        username = $('#username').val();
+        password = $('#password').val();
+        remember_me = $('#remember_me').is(':checked');
+        $.post('/login', {
+          username: username,
+          password: password,
+          remember_me: remember_me
+        }, function(data) {
+          if (data.auth) {
+            if (data.isCookie){
+                setCookie('username', username, 1);
+                setCookie('password', password, 1);
+            }
+            console.log(document.cookie);
+            console.log(getCookie('username'));
+            window.location.href = '/book';
+            logSuccess();
+          }
+          else {
+            $('#logerror').text('invalid username or password');
+          }
+        });
+      });
+    }
   }
 });

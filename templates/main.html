@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{ super() }}
+<script src="{{ url_for('static', filename = './js/script.js') }}"></script>
+{% endblock %}
+
+{% block nav_items %}
+<li class="dropdown" id="drop">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Booklist<span class="caret"></span></a>
+  <ul class="dropdown-menu" role="menu" id="menu">
+    <li><a href="#">Book1</a></li>
+  </ul>
+</li>
+<li><a href="/">Add Book</a></li>
+<li><a href="/">Log out</a></li>
+{% endblock %}
