@@ -1,0 +1,38 @@
+{% extends "main.html" %}
+
+{% block content %}
+<span>
+  <div class="container" id="addform">
+    <form>
+      <div>
+        <label>Book Name</label>
+        <input type="text" id="bookname" required>
+      </div>
+      <br>
+      <div>
+        <label>Chapter Number</label>
+        <input type="text" id="chapternumber" required>
+      </div>
+      <br>
+      <div>
+        <label>Source URL</label>
+        <input type="text" id="sourceurl" required>
+      </div>
+      <br>
+      <div>
+        <label>Page Reg</label>
+        <input type="text" id="pagereg" required>
+      </div>
+      <br>
+      <div>
+        <label>Content Reg</label>
+        <input type="text" id="contentreg" required>
+      </div>
+    </div>
+      <div>
+        <button class="btn btn-primary" id="formbtn" value="1" type="button">Submit</button>
+      </div>
+    </form>
+  </div>
+</span>
+{% endblock %}

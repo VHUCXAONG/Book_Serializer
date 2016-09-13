@@ -2,7 +2,6 @@
 from flask import Flask, render_template, request, redirect, jsonify, session, url_for
 from . import main
 import sys
-
 sys.path.append("..")
 from model import User, Book
 
@@ -29,12 +28,16 @@ def login():
     return jsonify(auth = auth, isCookie = cookie)
 
 @main.route('/book')
-def main1():
+def book():
     print session
     if 'username' in session:
         return render_template('main.html')
     else:
         return redirect(url_for('main.index'))
+        
+@main.route('/add')
+def add():
+    return render_template('add.html')
 
 @main.route('/loadbook', methods=['POST'])
 def loadbook():

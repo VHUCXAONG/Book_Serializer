@@ -19,7 +19,8 @@ function getCookie(cname) {
 
 function logSuccess() {
   username = getCookie('username');
-  var menu = $('#menu');
+  var book_menu = $('#book_menu');
+  var change_menu = $('#change_menu');
   console.log(menu);
   $.post('/loadbook',function(data) {
     console.log(data);
@@ -27,7 +28,9 @@ function logSuccess() {
     for (var i = 0; i < data.book_name.length; i++) {
       var name = data.book_name[i];
       var new_li = '<li><a>' + name + '</a></li>';
-      menu.append(new_li);
+      var new_change = '<li><a href="/add">' + name + '</a></li>';
+      book_menu.append(new_li);
+      change_menu.append(new_change);
     }
   });
 }

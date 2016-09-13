@@ -5,13 +5,19 @@ from werkzeug.security import generate_password_hash, check_password_hash
 class Book(db.Model):
     __tablename__ = 'book'
     id = db.Column(db.Integer, primary_key=True)
-    book_name = db.Column(db.UnicodeText(128), unique=True, index=True)
+    book_name = db.Column(db.UnicodeText(128), index=True)
     chapter_number = db.Column(db.Integer)
-    source = db.Column(db.String(64))
-    def __init__(self, name, chapter, source):
+    source_url = db.Column(db.String(128))
+    page_url_rule = db.Column(db.String(128))
+    content_url_rule = db.Column(db.String(128))
+    username = db.Column(db.String(64), index=True)
+    def __init__(self, name, chapter, url, username, page_url_rule, content_url_rule):
         self.book_name = name
         self.chapter_number = chapter
-        self.source = source
+        self.source_url = url
+        self.username = username
+        self.page_url_rule = page_url_rule
+        self.content_url_rule = content_url_rule
 
 class User(db.Model):
     __tablename__ = 'user'
